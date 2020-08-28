@@ -31,8 +31,8 @@ const onChange=e=>{
       {message ? <Message msg={message} /> : null}
       <form onSubmit={onSubmit}>
         <div className='form-group mb-4'>
-         <label for="formGroupExampleInput">Cuantas personas van a asistir al meetup?</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="numero de personas"   onChange={onChange}></input>
+         <label>Cuantas personas van a asistir al meetup?</label>
+    <input type="text" className="form-control" id="formGroupExampleInput" placeholder="numero de personas"   onChange={onChange}></input>
         </div>
 
 
