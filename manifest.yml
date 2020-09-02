@@ -1,0 +1,7 @@
+---
+    applications:
+    - name: tranco-test
+      memory: 1G
+      command: 
+      buildpacks:
+        - https://github.com/cloudfoundry/staticfile-buildpack.git
