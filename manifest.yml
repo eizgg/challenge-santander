@@ -1,7 +1,7 @@
 ---
     applications:
-    - name: tranco-test
+    - name: challenge-santander
       memory: 1G
       command: 
       buildpacks:
-        - https://github.com/cloudfoundry/staticfile-buildpack.git
+        - https://github.com/cloudfoundry/nodejs-buildpack
