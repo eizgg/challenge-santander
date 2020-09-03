@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
-const port = 5000;
+const port = process.env.port || 8080;
 const path = require("path");
 var request = require("retry-request", {
   request: require("request"),

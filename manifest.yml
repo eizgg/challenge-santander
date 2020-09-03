@@ -1,6 +1,6 @@
 ---
     applications:
-    - name: challenge-santander
+    - name: Challenge-santander
       memory: 1G
       command: 
       buildpacks:
