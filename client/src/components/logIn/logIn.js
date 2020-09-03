@@ -3,8 +3,8 @@ import { Redirect } from "react-router-dom";
 import { useAuth } from "../../utils/auth";
 import axios from "axios";
 import axiosRetry from "axios-retry";
-import { useTranslation} from "react-i18next";
-
+import { useTranslation } from "react-i18next";
+import Temperatura from "../temperatura/Temperatura"
 function LogIn(props) {
   const { t, i18n } = useTranslation();
   const [user, setUser] = useState("");
@@ -14,9 +14,12 @@ function LogIn(props) {
   const [msg, setMsg] = useState("");
   const { setAuthTokens } = useAuth();
   const referer = "/";
+  //función para cambiar el lenguaje con la libreria i18next
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
+  //llamada a la api consultando por el usuario y contraseña
+  //se usa axios retry con delay 
   function postLogin(e) {
     e.preventDefault();
     if (!user) {
@@ -61,6 +64,30 @@ function LogIn(props) {
     <>
       <div className="container mt-5">
         <div className="row">
+        <div className="col">
+          <button
+            className="btn btn-secondary"
+            data-toggle="button"
+            aria-pressed="false"
+            onClick={() => changeLanguage("en")}
+          >
+            en
+          </button>
+          <button
+            className="btn btn-secondary"
+            data-toggle="button"
+            aria-pressed="false"
+            onClick={() => changeLanguage("es")}
+          >
+            es
+          </button>
+          </div>
+          <div className="col">
+          <Temperatura/>
+                 </div>
+        </div>
+        
+        <div className="row">
           <div className="col d-flex justify-content-center ">
             <div className="card text-center" style={{ width: "20rem" }}>
               <div className="card-header">{t("Ingreso")}</div>
@@ -101,8 +128,6 @@ function LogIn(props) {
                   </div>
                 ) : null}
               </div>
-              <button onClick={() => changeLanguage("en")}>en</button>
-              <button onClick={() => changeLanguage("es")}>es</button>
             </div>
           </div>
         </div>

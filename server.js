@@ -24,6 +24,7 @@ app.get("*", (req, res) => {
 // Initialize Cloudant with settings from .env
 var username = process.env.cloudant_username;
 var password = process.env.cloudant_password;
+//conexión con retry y maxAttempt definidos 
 var cloudant = Cloudant({
   account: username,
   password: password,
@@ -48,7 +49,7 @@ app.post("/api/users", (req, res) => {
     }
   });
 });
-
+//Calculo de las cervezas que habría que comprar
 app.post("/api/cervezas", (req, res) => {
   console.log(req.body);
   var CajaDeCervezas = 0;
@@ -62,7 +63,7 @@ app.post("/api/cervezas", (req, res) => {
   }
   res.send({ PacksDeCervezas: CajaDeCervezas });
 });
-
+//Conexión a la api del clima.
 app.post("/api/weather", (req, res) => {
   var options = {
     noResponseRetries: 3,

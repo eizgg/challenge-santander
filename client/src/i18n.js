@@ -10,6 +10,8 @@ const resources = {
       "Ocurrió un problema con el servidor vuelva a intentar.":"There was problem with the server try again",
       "Ocurrió un problema  vuelva a intentar.":"There was a problem try again",
       "Usuario y/o contraseña incorrectos.":"User and/or password is incorrect",
+      "Inserte Contraseña":"Insert Password",
+      "Inserte Usuario":"Insert User",
       "Numero de personas":"Number of People",
       "Enviar":"Submit",
       "Cuantas personas van a asistir al meetup?":"How many people will attend the meetup?",

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import axiosRetry from "axios-retry";
 import { useTranslation} from "react-i18next";
+//Consulta al backend por la temperatura, se usa axiosRetry y opossum para el circuitBreaker
+//Forma de testear el CircuitBreaker: bajarle el timeout
 const Temperatura = () => {
   const {t, i18n} = useTranslation();
   const [temp, setTemp] = useState("");

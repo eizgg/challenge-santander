@@ -1,17 +1,19 @@
-FROM node:13.12.0-alpine as build
-WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm ci --silent
-RUN npm install react-scripts@3.4.1 -g --silent
-COPY . ./
-RUN npm run build
+FROM node:12.16-alpine
 
-# production environment
-FROM nginx:stable-alpine
-COPY --from=build /app/build /usr/share/nginx/html
-# new
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+WORKDIR /
+
+COPY package*.json resources server /
+
+RUN  npm install
+
+COPY . /
+
+ENV NODE_ENV production
+ENV PORT 8080
+ENV LOCAL false
+ENV CLOUDANT_USERNAME 39e0763e-3022-4bea-b698-60dd3f1d616d-bluemix
+ENV CLOUDANT_PASSWORD a9afca5926e2274981bcda635ef1ac0be5ca16c2370130718412bd3744642bb4
+
+EXPOSE 8080
+
+CMD [ "npm", "run", "start"]
